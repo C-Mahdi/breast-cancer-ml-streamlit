@@ -5,9 +5,9 @@ The application is built using **Python**, **Scikit-learn**, and **Streamlit**, 
 
 ---
 
-## 🚀 Application Overview
+##  Application Overview
 
-### 🏠 Breast Cancer Website
+###  Breast Cancer Website
 <p align="center">
   <img src="images/website.png" width="700">
 </p>
