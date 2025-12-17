@@ -265,7 +265,7 @@ DEFAULT_VALUES = [
 
 # Feature descriptions and ranges
 FEATURE_INFO = {
-    'mean': ('Mean Values', 'Average measurements of cell nuclei', '📊'),
+    'mean': ('Mean Values', 'Average measurements of cell nuclei', ''),
     'se': ('Standard Error', 'Variability in measurements', '📈'),
     'worst': ('Worst Values', 'Largest/most severe measurements', '⚠️')
 }
@@ -485,7 +485,7 @@ def main():
         # Model selection dropdown with all models including ensemble
         model_options = list(MODEL_INFO.keys())
         model_choice = st.selectbox(
-            "🤖 Select Prediction Model",
+            " Select Prediction Model",
             model_options,
             help="Choose the machine learning model for prediction"
         )
@@ -501,7 +501,7 @@ def main():
         """)
         
         # Show all available models
-        with st.expander("📊 All Available Models"):
+        with st.expander(" All Available Models"):
             st.markdown("### Loaded Models:")
             for model_name in MODEL_INFO.keys():
                 if model_name in models_dict or model_name == 'Ensemble Voting':
@@ -510,11 +510,11 @@ def main():
                     st.markdown(f"❌ {model_name}")
         
         st.markdown("---")
-        st.markdown("### 🎛️ Quick Actions")
+        st.markdown("###  Quick Actions")
         
         col1, col2 = st.columns(2)
         with col1:
-            if st.button("📊 Load Sample", use_container_width=True):
+            if st.button(" Load Sample", use_container_width=True):
                 st.session_state.use_defaults = True
                 st.rerun()
         with col2:
@@ -538,14 +538,14 @@ def main():
     col1, col2 = st.columns([2.5, 1.5])
     
     with col1:
-        st.markdown("## 📝 Patient Data Input")
+        st.markdown("##  Patient Data Input")
         st.markdown("Enter the cell nuclei measurements obtained from diagnostic imaging:")
         
         # Create input form
         features = create_input_form()
     
     with col2:
-        st.markdown("## 🎯 Analysis Results")
+        st.markdown("##  Analysis Results")
         
         # Predict button
         if st.button("🔍 Analyze & Predict", use_container_width=True):
