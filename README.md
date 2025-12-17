@@ -35,9 +35,13 @@ After entering medical features, the application displays the **prediction resul
 ---
 
 ## 🧪 Machine Learning Models
-- XGBoost
-- Random Forest
+- XGBoost / RandomForest
 - Gradient Boosting
+- GRU SVM
+- MLP
+- knn
+- logistic regression
+- linear regression
 - Voting Classifier (ensemble)
 
 ---
@@ -45,13 +49,6 @@ After entering medical features, the application displays the **prediction resul
 ## 🛠️ Tech Stack
 - Python
 - Scikit-learn
-- XGBoost / RandomForest
-- Gradient boosting
-- svm
-- mlp
-- knn
-- logistic regression
-- linear regression
 - Streamlit
 - Pandas & NumPy
 
