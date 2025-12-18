@@ -521,8 +521,8 @@ DEFAULT_VALUES = [
 
 # Feature descriptions and ranges
 FEATURE_INFO = {
-    'mean': ('Mean Values', 'Average measurements of cell nuclei', '📊'),
-    'se': ('Standard Error', 'Variability in measurements', '📈'),
+    'mean': ('Mean Values', 'Average measurements of cell nuclei', ''),
+    'se': ('Standard Error', 'Variability in measurements', ''),
     'worst': ('Worst Values', 'Largest/most severe measurements', '⚠️')
 }
 
@@ -556,7 +556,7 @@ MODEL_INFO = {
     'Gradient Boosting': {
         'name': 'Gradient Boosting',
         'description': 'Sequential ensemble model that builds trees to correct previous errors.',
-        'icon': '🚀'
+        'icon': '⚡'
     },
     'XGBoost': {
         'name': 'XGBoost',
@@ -591,7 +591,7 @@ def load_models():
         # Load scaler
         models['scaler'] = joblib.load('models/scaler.pkl')
         
-        st.success("✅ All models loaded successfully!")
+       
         return models
     except Exception as e:
         st.error(f"Error loading models: {e}")
@@ -719,7 +719,7 @@ def main():
     models_dict = load_models()
     
     if models_dict is None:
-        st.error("⚠️ Unable to load models. Please ensure all model files are in the same directory.")
+        st.error(" Unable to load models. Please ensure all model files are in the same directory.")
         st.info("""
         Required model files:
         - KNeighborsClassifier.pkl
@@ -741,13 +741,13 @@ def main():
         # Model selection dropdown with all models including ensemble
         model_options = list(MODEL_INFO.keys())
         model_choice = st.selectbox(
-            "🔬 Select Prediction Model",
+            " Select Prediction Model",
             model_options,
             help="Choose the machine learning model for prediction"
         )
         
         st.markdown("---")
-        st.markdown("### 📋 Model Information")
+        st.markdown("###  Model Information")
         
         selected_info = MODEL_INFO[model_choice]
         st.markdown(f"""
@@ -762,9 +762,9 @@ def main():
             st.markdown("### Loaded Models:")
             for model_name in MODEL_INFO.keys():
                 if model_name in models_dict or model_name == 'Ensemble Voting':
-                    st.markdown(f"✅ **{model_name}**")
+                    st.markdown(f" **{model_name}**")
                 else:
-                    st.markdown(f"❌ {model_name}")
+                    st.markdown(f" {model_name}")
         
         st.markdown("---")
         st.markdown("### ⚡ Quick Actions")
@@ -780,14 +780,14 @@ def main():
                 st.rerun()
         
         st.markdown("---")
-        st.markdown("### ℹ️ About")
+        st.markdown("###  About")
         st.markdown("""
         <div style="padding: 1.3rem; background: rgba(102, 126, 234, 0.04); border-radius: 14px; font-size: 0.9rem; border: 1px solid rgba(102, 126, 234, 0.1);">
             <p style="color: #4a5568; line-height: 1.7; margin: 0;">
             This system uses machine learning algorithms to analyze cell nuclei measurements and predict breast cancer diagnosis.
             </p>
             <br>
-            <p style="color: #718096; margin: 0;"><strong style="color: #667eea;">⚕️ Medical Disclaimer</strong><br>
+            <p style="color: #718096; margin: 0;"><strong style="color: #667eea;"> Medical Disclaimer</strong><br>
             This tool is for educational and research purposes only. Always consult qualified healthcare professionals for medical advice.</p>
         </div>
         """, unsafe_allow_html=True)
@@ -806,11 +806,11 @@ def main():
         st.markdown("##  Analysis Results")
         
         # Predict button
-        if st.button("🔍 Analyze & Predict", use_container_width=True):
+        if st.button(" Analyze & Predict", use_container_width=True):
             if all(v == 0.0 for v in features.values()):
                 st.warning("⚠️ Please enter valid measurements before prediction.")
             else:
-                with st.spinner("🔄 Analyzing data..."):
+                with st.spinner(" Analyzing data..."):
                     scaler = models_dict['scaler']
                     
                     if model_choice == 'Ensemble Voting':
@@ -878,7 +878,7 @@ def main():
                         st.markdown(f"<div class='info-badge'>Model: {model_display}</div>", unsafe_allow_html=True)
                         
                         st.markdown("---")
-                        st.warning("⚕️ **Important**: This prediction should be reviewed by qualified medical professionals. Never rely solely on automated systems for medical decisions.")
+                        st.warning(" **Important**: This prediction should be reviewed by qualified medical professionals. Never rely solely on automated systems for medical decisions.")
 
 if __name__ == "__main__":
     main()
